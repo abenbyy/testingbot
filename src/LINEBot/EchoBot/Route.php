@@ -26,12 +26,27 @@ use LINE\LINEBot\Exception\InvalidSignatureException;
 
 class Route
 {
+
+    public function startsWith($str, $start){
+        $len = strlen($start);
+
+        return (substr($str, 0 , $len) === $start);
+    }
+
     public function register(\Slim\App $app)
     {
 
-        $app->get('/', function ($req,$res){
-            $res->write("Hello World");
+        $app->get('/help', 'ResponseController:help');
 
+        $app->get('/', function ($req,$res){
+
+            //$startsWith = $this->startsWith;
+            if($this->startsWith("Testing","Test")){
+                $res->write("true");
+            }
+
+            else $res->write("false");
+            
             return $res;
         });
         

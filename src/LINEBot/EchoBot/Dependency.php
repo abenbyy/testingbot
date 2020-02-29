@@ -46,5 +46,9 @@ class Dependency
             ]);
             return $bot;
         };
+
+        $container['ResponseController'] = function($container){
+            return new ResponseController();
+        };
     }
 }
