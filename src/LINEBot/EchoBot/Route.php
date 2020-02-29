@@ -66,13 +66,7 @@ class Route
                     continue;
                 }
 
-                $replyText = "";
-                if(startsWith($event->getText(),"./help")){
-                    $replyText = "This is bots help";
-                }else{
-                    $replyText = $event->getText();
-                }
-                
+                $replyText = $event->getText();
                 $logger->info('Reply text: ' . $replyText);
                 $resp = $bot->replyText($event->getReplyToken(), $replyText);
                 $logger->info($resp->getHTTPStatus() . ': ' . $resp->getRawBody());
